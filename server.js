@@ -6,11 +6,19 @@ const path = require('path');
 
 const PORT = process.env.PORT || 3000;
 const INDEX = path.join(__dirname, 'index.html');
+const app = express();
+const server = app
+  .use((req, res) => res.sendFile(INDEX) );
 
-const server = express()
-  .use((req, res) => res.sendFile(INDEX) )
-  .listen(PORT, () => console.log(`Listening on ${ PORT }`));
-
+app.get("/teacher.html", function(req, res)
+{
+    res.sendFile(__dirname + "teacher.html");
+});
+app.get("/student.html", function(req, res)
+{
+    res.sendFile(__dirname + "student.html");
+});
+server.listen(PORT, () => console.log(`Listening on ${ PORT }`));
 const io = socketIO(server);
 
 
