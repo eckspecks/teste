@@ -1,5 +1,5 @@
 'use strict';
-
+const http = require('http');
 const express = require('express');
 const socketIO = require('socket.io');
 const path = require('path');
@@ -7,16 +7,22 @@ const path = require('path');
 const PORT = process.env.PORT || 3000;
 const INDEX = path.join(__dirname, 'index.html');
 const app = express();
-const server = app
-  .use((req, res) => res.sendFile(INDEX) );
-
+const server = http.createServer(app);
+app.get("/", function(req, res)
+{
+    res.sendFile(__dirname + "/index.html");
+});
+app.get("/index.html", function(req, res)
+{
+    res.sendFile(__dirname + "/index.html");
+});
 app.get("/teacher.html", function(req, res)
 {
-    res.sendFile(__dirname + "teacher.html");
+    res.sendFile(__dirname + "/teacher.html");
 });
 app.get("/student.html", function(req, res)
 {
-    res.sendFile(__dirname + "student.html");
+    res.sendFile(__dirname + "/student.html");
 });
 server.listen(PORT, () => console.log(`Listening on ${ PORT }`));
 const io = socketIO(server);
