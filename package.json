@@ -1,19 +1,14 @@
 {
-  "name": "websockets-socket.io",
-  "version": "1.0.0",
-  "engines": {
-    "node": "6.2.0"
-  },
-  "description": "",
+  "name": "heroku-node",
+  "description": "Our sample Node to Heroku app",
   "main": "index.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node index.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
-    "express": "4.13.4",
-    "socket.io": "1.4.6"
+    "ejs": "^2.6.2",
+    "express": "4.17.1",
+    "socket.io": "2.2.0",
+    "socket.io-client": "^2.2.0"
   }
 }
